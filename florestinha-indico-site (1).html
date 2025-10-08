@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florestinha do Índico - Bar & Restaurante</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <nav class="navbar" id="mainNavbar">
+        <div class="navbar-container">
+            <a href="#hero" class="navbar-brand" style="font-family: 'Pacifico', cursive;">
+                Florestinha do Índico
+            </a>
+            <ul class="navbar-links">
+                <li>
+                    <a href="#menu">
+                        <span class="lang-pt">Cardápio</span>
+                        <span class="lang-en hidden">Menu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about">
+                        <span class="lang-pt">Sobre Nós</span>
+                        <span class="lang-en hidden">About Us</span>
+                    </a>
+                </li>
+                <li>
+                </li>
+            </ul>
+            <li>
+                    <a href="#about">
+                        <span class="lang-pt"></span>
+                        <span class="lang-en hidden"></span>
+                    </a>
+                </li>
+        <button class="lang-btn" onclick="toggleLanguage()">
+        <span class="lang-pt">🇬🇧 English</span>
+        <span class="lang-en hidden">🇵🇹 Português</span>
+    </button> 
+        </div>
+
+    </nav>
+<section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">
+                <span class="lang-pt">Experiências Inesquecíveis à Beira-Mar</span>
+                <span class="lang-en hidden">Unforgettable Beachfront Experiences</span>
+            </p>
+            <p class="tagline">
+                <span class="lang-pt">Mais de 5 anos criando momentos mágicos com vista privilegiada ao nascer e pôr do sol sobre o Oceano Índico. Um lugar exclusivo onde cada detalhe é pensado para você.</span>
+                <span class="lang-en hidden">Over 5 years creating magical moments with a privileged view of sunrise and sunset over the Indian Ocean. An exclusive place where every detail is designed for you.</span>
+            </p>
+            <a href="#menu" class="menu-btn">
+                <span class="lang-pt">📋 Ver Cardápio</span>
+                <span class="lang-en hidden">📋 View Menu</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>
+            <span class="lang-pt">Nossos Serviços</span>
+            <span class="lang-en hidden">Our Services</span>
+        </h2>
+        <p class="section-intro">
+            <span class="lang-pt">No Florestinha do Índico, oferecemos uma experiência completa que vai muito além da gastronomia. Cada serviço é cuidadosamente planejado para proporcionar momentos únicos e memoráveis.</span>
+            <span class="lang-en hidden">At Florestinha do Índico, we offer a complete experience that goes far beyond gastronomy. Each service is carefully planned to provide unique and memorable moments.</span>
+        </p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                <img class="service-icon" src="florestinha img/3.jpg" alt="Restaurante"></div>
+                <h3>
+                    <span class="lang-pt">Restaurante Gourmet</span>
+                    <span class="lang-en hidden">Gourmet Restaurant</span>
+                </h3>
+                <p>
+                    <span class="lang-pt">Nossa culinária combina o melhor dos sabores locais com técnicas contemporâneas. Frutos do mar frescos, carnes grelhadas na perfeição e pratos vegetarianos criativos, tudo preparado por chefs experientes com ingredientes da mais alta qualidade.</span>
+                    <span class="lang-en hidden">Our cuisine combines the best of local flavors with contemporary techniques. Fresh seafood, perfectly grilled meats and creative vegetarian dishes, all prepared by experienced chefs with the highest quality ingredients.</span>
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div >
+                    <img class="service-icon" src="florestinha img/4.jpg" alt="bar"></div>
+                <h3>
+                    <span class="lang-pt">Bar Premium</span>
+                    <span class="lang-en hidden">Premium Bar</span>
+                </h3>
+                <p>
+                    <span class="lang-pt">Nosso bar oferece uma seleção exclusiva de cocktails autorais, vinhos importados, cervejas artesanais e destilados premium. Cada drink é uma obra de arte, criado por bartenders especializados enquanto você aprecia a vista deslumbrante do oceano.</span>
+                    <span class="lang-en hidden">Our bar offers an exclusive selection of signature cocktails, imported wines, craft beers and premium spirits. Each drink is a work of art, created by specialized bartenders while you enjoy the stunning ocean view.</span>
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div >
+                    <img class="service-icon" src="florestinha img/imagem florestinha vista evento.webp" alt="eventos"></div>
+                <h3>
+                    <span class="lang-pt">Eventos Especiais</span>
+                    <span class="lang-en hidden">Special Events</span>
+                </h3>
+                <p>
+                    <span class="lang-pt">Realizamos casamentos, aniversários, eventos corporativos e celebrações privadas em um cenário paradisíaco. Nossa equipe cuida de cada detalhe, desde a decoração até o entretenimento, garantindo que seu evento seja perfeito e inesquecível.</span>
+                    <span class="lang-en hidden">We host weddings, birthdays, corporate events and private celebrations in a paradisiacal setting. Our team takes care of every detail, from decoration to entertainment, ensuring your event is perfect and unforgettable.</span>
+                </p>
+            </div>
+
+            
+        </div>
+    </section>
+
+   <section class="section section-alt" id="menu">
+    <h2>
+        <span class="lang-pt">Nossos Produtos em Destaque</span>
+        <span class="lang-en hidden">Our Featured Products</span>
+    </h2>
+    <p class="section-intro">
+        <span class="lang-pt">Pratos e bebidas especialmente selecionados que representam o melhor da nossa casa.</span>
+        <span class="lang-en hidden">Dishes and drinks specially selected that represent the best of our house.</span>
+    </p>
+
+    <div class="menu-preview-container">
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="florestinha img/5.jpg" alt="lagosta assada">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Lagosta Grelhada</span>
+                        <span class="lang-en hidden">Grilled Lobster</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Lagosta fresca do Oceano Índico grelhada na manteiga de alho e ervas finas...</span>
+                        <span class="lang-en hidden">Fresh Indian Ocean lobster grilled in garlic butter and fine herbs...</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">2.500 MT</span>
+                        <span class="lang-en hidden">2,500 MT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="florestinha img/8.jpg" alt="Cocktail">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Cocktail do Índico</span>
+                        <span class="lang-en hidden">Indian Ocean Cocktail</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Nossa criação exclusiva com rum premium, frutas tropicais frescas, hortelã e um toque especial de gengibre.</span>
+                        <span class="lang-en hidden">Our exclusive creation with premium rum, fresh tropical fruits, mint and a special touch of ginger.</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">450 MT</span>
+                        <span class="lang-en hidden">450 MT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="florestinha img/7.jpg" alt="peixe piri piri">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Peixe Piri-Piri</span>
+                        <span class="lang-en hidden">Piri-Piri Fish</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Peixe do dia marinado em molho piri-piri caseiro e grelhado no carvão. Autenticamente moçambicano!</span>
+                        <span class="lang-en hidden">Fish of the day marinated in homemade piri-piri sauce and charcoal grilled. Authentically Mozambican!</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">1.200 MT</span>
+                        <span class="lang-en hidden">1,200 MT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card blurred-card">
+                <div class="product-image">
+                    <img src="florestinha img/9.jpg" alt="">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Caril de Camarão</span>
+                        <span class="lang-en hidden">Shrimp Curry</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Camarões gigantes em molho de caril cremoso com leite de coco, tomate e especiarias aromáticas.</span>
+                        <span class="lang-en hidden">Giant shrimp in creamy curry sauce with coconut milk, tomato and aromatic spices.</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">1.800 MT</span>
+                        <span class="lang-en hidden">1,800 MT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card blurred-card">
+                <div class="product-image">
+                    <img src="florestinha img/6.jpg" alt="">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Torta de Coco</span>
+                        <span class="lang-en hidden">Coconut Cake</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Sobremesa artesanal feita com coco fresco ralado, massa crocante e cobertura cremosa.</span>
+                        <span class="lang-en hidden">Artisanal dessert made with fresh grated coconut, crispy dough and creamy topping.</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">350 MT</span>
+                        <span class="lang-en hidden">350 MT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card blurred-card">
+                <div class="product-image">
+                    <img src="florestinha img/10.jpg" alt="">
+                </div>
+                <div class="product-info">
+                    <h3>
+                        <span class="lang-pt">Vinho da Casa</span>
+                        <span class="lang-en hidden">House Wine</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Seleção especial de vinhos portugueses tintos e brancos, cuidadosamente escolhidos para harmonizar.</span>
+                        <span class="lang-en hidden">Special selection of Portuguese red and white wines, carefully chosen to pair perfectly.</span>
+                    </p>
+                    <div class="product-price">
+                        <span class="lang-pt">1.500 MT</span>
+                        <span class="lang-en hidden">1,500 MT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-mask"></div>
+        
+        <a href="#full-menu" class="explore-menu-btn">
+            <span class="lang-pt">ESPLORAR O CARDÁPIO COMPLETO</span>
+            <span class="lang-en hidden">EXPLORE THE FULL MENU</span>
+        </a>
+    </div>
+</section>
+    <section class="nightlife-section">
+        <div class="nightlife-content">
+            <div class="nightlife-intro">
+                <h2>
+                    <span class="lang-pt">Noites Mágicas no Florestinha</span>
+                    <span class="lang-en hidden">Magical Nights at Florestinha</span>
+                </h2>
+                <p>
+                    <span class="lang-pt">Quando o sol se põe, o Florestinha do Índico se transforma em um cenário mágico. As luzes suaves, a brisa do mar, o som das ondas e a música ao vivo criam uma atmosfera única e romântica. Nossos shows e eventos especiais já receberam centenas de pessoas que buscam viver momentos inesquecíveis à beira-mar. Cada noite é uma celebração da vida, da boa música e da excelente companhia.</span>
+                    <span class="lang-en hidden">When the sun sets, Florestinha do Índico transforms into a magical setting. The soft lights, sea breeze, sound of waves and live music create a unique and romantic atmosphere. Our shows and special events have already welcomed hundreds of people seeking to live unforgettable moments by the sea. Each night is a celebration of life, good music and excellent company.</span>
+                </p>
+            </div>
+
+            <h3>
+                <span class="lang-pt"> Espetáculos Realizados</span>
+                <span class="lang-en hidden"> Past Shows</span>
+            </h3>
+
+            <div class="shows-grid">
+                <div class="show-card">
+                    <div class="photo-showcase">
+                        <img src="florestinha img/florestinha evento.jpg" alt="evento">
+                        <div class="show-badge">
+                            <span class="lang-pt">SUCESSO</span>
+                            <span class="lang-en hidden">SUCCESS</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Noite de Jazz ao Luar</span>
+                            <span class="lang-en hidden">Moonlit Jazz Night</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Show intimista com a banda Jazz do Índico, que encantou mais de 200 pessoas com músicas suaves e românticas sob a lua cheia.</span>
+                            <span class="lang-en hidden">Intimate show with Jazz do Índico band, which enchanted over 200 people with smooth and romantic music under the full moon.</span>
+                        </p>
+                        <p class="show-date"> 
+                            <span class="lang-pt">Agosto 2024</span>
+                            <span class="lang-en hidden">August 2024</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="show-card">
+                    <div class="photo-showcase">
+                        <img src="florestinha img/florestinha event2.jpg" alt="evento festa">
+                        <div class="show-badge">
+                            <span class="lang-pt">ESGOTADO</span>
+                            <span class="lang-en hidden">SOLD OUT</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Festival de Verão</span>
+                            <span class="lang-en hidden">Summer Festival</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Grande festa com DJs locais e internacionais, shows de marrabenta e uma atmosfera eletrizante que durou até o amanhecer. Mais de 500 pessoas celebraram conosco!</span>
+                            <span class="lang-en hidden">Big party with local and international DJs, marrabenta shows and an electrifying atmosphere that lasted until dawn. Over 500 people celebrated with us!</span>
+                        </p>
+                        <p class="show-date">📅 
+                            <span class="lang-pt">Dezembro 2024</span>
+                            <span class="lang-en hidden">December 2024</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="show-card">
+                    <div class="photo-showcase">
+                        <img src="florestinha img/evento 1 florestinha.jpg" alt="evento beer">
+                        <div class="show-badge">
+                            <span class="lang-pt">ESPECIAL</span>
+                            <span class="lang-en hidden">SPECIAL</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Réveillon 2025</span>
+                            <span class="lang-en hidden">New Year's Eve 2025</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Celebração épica de ano novo com jantar especial, música ao vivo, DJ e queima de fogos na praia. Uma noite mágica que marcou o início de 2025 com muita alegria!</span>
+                            <span class="lang-en hidden">Epic New Year's celebration with special dinner, live music, DJ and fireworks on the beach. A magical night that marked the beginning of 2025 with lots of joy!</span>
+                        </p>
+                        <p class="show-date">📅 
+                            <span class="lang-pt">Janeiro 2025</span>
+                            <span class="lang-en hidden">January 2025</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>
+                <span class="lang-pt">🎉 Próximos Eventos</span>
+                <span class="lang-en hidden">🎉 Upcoming Events</span>
+            </h3>
+
+            <div class="shows-grid">
+                <div class="show-card">
+                    <div class="show-image">
+                        <img src="florestinha img/florestinha show de comida.jpg" alt="festa de comida">
+                        <div class="show-badge">
+                            <span class="lang-pt">NOVIDADE</span>
+                            <span class="lang-en hidden">NEW</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Noite Acústica</span>
+                            <span class="lang-en hidden">Acoustic Night</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Show especial com músicos acústicos tocando os maiores clássicos da música moçambicana e internacional. Ambiente intimista e romântico perfeito para casais.</span>
+                            <span class="lang-en hidden">Special show with acoustic musicians playing the greatest classics of Mozambican and international music. Intimate and romantic atmosphere perfect for couples.</span>
+                        </p>
+                        <p class="show-date">
+                            <span class="lang-pt">15 de Novembro, 19:00</span>
+                            <span class="lang-en hidden">November 15th, 7:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="show-card">
+                    <div class="show-image">
+                        <img src="florestinha img/florestinha event2.jpg" alt="festa esgotada">
+                        <div class="show-badge">
+                            <span class="lang-pt">LIMITADO</span>
+                            <span class="lang-en hidden">LIMITED</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Festa de Natal</span>
+                            <span class="lang-en hidden">Christmas Party</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Grande celebração de Natal com jantar especial, música ao vivo, DJ e decoração temática. Traga sua família para uma noite inesquecível à beira-mar!</span>
+                            <span class="lang-en hidden">Big Christmas celebration with special dinner, live music, DJ and themed decoration. Bring your family for an unforgettable night by the sea!</span>
+                        </p>
+                        <p class="show-date">📅 
+                            <span class="lang-pt">24 de Dezembro, 20:00</span>
+                            <span class="lang-en hidden">December 24th, 8:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="show-card">
+                    <div class="show-image">
+                        <img src="florestinha img/festa florestinha.jpeg" alt="festa">
+                        <div class="show-badge">
+                            <span class="lang-pt">IMPERDÍVEL</span>
+                            <span class="lang-en hidden">UNMISSABLE</span>
+                        </div>
+                    </div>
+                    <div class="show-info">
+                        <h3>
+                            <span class="lang-pt">Réveillon 2026</span>
+                            <span class="lang-en hidden">New Year's Eve 2026</span>
+                        </h3>
+                        <p>
+                            <span class="lang-pt">Receba o ano novo com chave de ouro! Jantar gourmet, open bar premium, shows especiais e queima de fogos espetacular. Reservas abertas - vagas limitadas!</span>
+                            <span class="lang-en hidden">Welcome the new year in style! Gourmet dinner, premium open bar, special shows and spectacular fireworks. Reservations open - limited spots!</span>
+                        </p>
+                        <p class="show-date">
+                            <span class="lang-pt">31 de Dezembro, 21:00</span>
+                            <span class="lang-en hidden">December 31st, 9:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section">
+        <div class="location-content">
+            <h2>
+                <span class="lang-pt">Nossa Localização</span>
+                <span class="lang-en hidden">Our Location</span>
+            </h2>
+            <p class="section-intro">
+                <span class="lang-pt">Venha nos visitar e descubra por que somos o destino favorito de quem busca experiências únicas à beira-mar.</span>
+                <span class="lang-en hidden">Come visit us and discover why we are the favorite destination for those seeking unique beachfront experiences.</span>
+            </p>
+
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>
+                        <span class="lang-pt">Encontre-nos no Paraíso</span>
+                        <span class="lang-en hidden">Find Us in Paradise</span>
+                    </h3>
+                    <p>
+                        <span class="lang-pt">Estrategicamente localizado em um dos pontos turísticos mais privilegiados da região, o Florestinha do Índico oferece acesso direto à praia, estacionamento amplo e fácil localização. A apenas poucos minutos dos principais hotéis e resorts, somos o destino perfeito para quem busca combinar gastronomia de excelência com a beleza natural do Oceano Índico.</span>
+                        <span class="lang-en hidden">Strategically located in one of the most privileged tourist spots in the region, Florestinha do Índico offers direct beach access, ample parking and easy location. Just minutes from major hotels and resorts, we are the perfect destination for those looking to combine excellent gastronomy with the natural beauty of the Indian Ocean.</span>
+                    </p>
+
+                    <div class="location-details">
+                        <p> 
+                            <span class="lang-pt"><strong>Endereço:</strong> Avenida Marginal, Praia do Índico, Maputo</span>
+                            <span class="lang-en hidden"><strong>Address:</strong> Marginal Avenue, Indian Ocean Beach, Maputo</span>
+                        </p>
+                        <p>⏰ 
+                            <span class="lang-pt"><strong>Horário:</strong> Terça a Domingo, 11:00 - 23:00</span>
+                            <span class="lang-en hidden"><strong>Hours:</strong> Tuesday to Sunday, 11:00 AM - 11:00 PM</span>
+                        </p>
+                        <p>📞 
+                            <span class="lang-pt"><strong>Telefone:</strong> +258 84 XXX XXXX</span>
+                            <span class="lang-en hidden"><strong>Phone:</strong> +258 84 XXX XXXX</span>
+                        </p>
+                        <p>✉️ 
+                            <span class="lang-pt"><strong>Email:</strong> contato@florestinhadoindico.co.mz</span>
+                            <span class="lang-en hidden"><strong>Email:</strong> contact@florestinhadoindico.co.mz</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="location-image">
+                    <img src="florestinha img/12.jpg" alt="entrada de traz">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <div class="footer-col footer-col-left">
+                    <h3 class="footer-title" style="font-family: 'comic Sans MS', cursive;">
+                        Florestinha Do Índico
+                    </h3>
+                    <p class="footer-description">
+                        <span class="lang-pt">O sabor autêntico de Moçambique em cada prato, com a hospitalidade calorosa que nos define.</span>
+                        <span class="lang-en hidden">The authentic flavor of Mozambique in every dish, with the warm hospitality that defines us.</span>
+                    </p>
+                </div>
+                
+                <div class="footer-col footer-col-center">
+                    <h4 class="footer-subtitle">
+                        <span class="lang-pt">Redes Sociais</span>
+                        <span class="lang-en hidden">Social Media</span>
+                    </h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-col-right">
+                    <h4 class="footer-subtitle">
+                        <span class="lang-pt">Contato</span>
+                        <span class="lang-en hidden">Contact</span>
+                    </h4>
+                    <p class="contact-detail">
+                        <i class="fas fa-phone mr-2"></i>
+                        +258 860 000 000
+                    </p>
+                    <p class="contact-detail">
+                        <i class="fas fa-envelope mr-2"></i>
+                        info@florestinha.co.mz
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    <span class="lang-pt">&copy; 2025 Florestinha do Índico. Todos os direitos reservados. 🇲🇿</span>
+                    <span class="lang-en hidden">&copy; 2025 Florestinha do Índico. All rights reserved. 🇲🇿</span>
+                </p>
+                <p class="footer-bottom-text-small">
+                    powered by zeinadine
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    </script>
+</body>
+</html>
+
+
+    <script>
+        let currentLang = 'pt';
+
+        function toggleLanguage() {
+            // Alterna entre 'pt' (Português) e 'en' (Inglês)
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            
+            // Oculta/Exibe elementos de acordo com o idioma
+            document.querySelectorAll('.lang-pt').forEach(el => {
+                el.classList.toggle('hidden', currentLang === 'en');
+            });
+            
+            document.querySelectorAll('.lang-en').forEach(el => {
+                el.classList.toggle('hidden', currentLang === 'pt');
+            });
+            
+            // Atualiza o atributo lang da tag <html> para acessibilidade
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>
