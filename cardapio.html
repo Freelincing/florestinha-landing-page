@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio FLORESTINHA DO INDICO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #e0f2fe;
+            transition: background-color 0.3s ease;
+        }
+        .header-day {
+            background-color: #af0328;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .header-night {
+            background-color: #0d1a33;
+            color: #af0328;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .card-day {
+            background-color: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-day:hover {
+            transform: translateY(-5px);
+        }
+        .card-night {
+            background-color: rgb(4, 131, 131);
+            color: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-night:hover {
+            transform: translateY(-5px);
+        }
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+        .btn-theme {
+            background-color: #000000;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-theme:hover {
+            background-color: #00000;
+        }
+        .btn-theme.active-tab {
+            background-color: #000000;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+        }
+        .btn-theme-night {
+            background-color: #000000;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-theme-night:hover {
+            background-color: #dc2626;
+        }
+        .btn-theme-night.active-tab {
+            background-color: #dc2626;
+            box-shadow: 0 0 20px rgba(255, 99, 71, 0.5);
+        }
+        .lang-btn {
+            background-color: white;
+            color: #985c41;
+            border: 2px solid #985c41;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #985c41;
+            color: white;
+        }
+        .order-btn {
+            background-color: #10b981;
+            color: white;
+            font-weight: 600;
+        }
+        .close-btn {
+            background-color: #ef4444;
+            color: white;
+            font-weight: 600;
+        }
+        .modal {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        .header-title {
+            font-family: 'Pacifico', cursive;
+        }
+        .mozambique-flag {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            font-size: 24px;
+        }
+        @media (max-width: 640px) {
+            .header-title {
+                font-size: 1.5rem;
+            }
+            .menu-tab-btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.75rem;
+            }
+            .card-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-blue-100 flex flex-col min-h-screen">
+
+    <!-- Bandeira de Moçambique -->
+    <div class="mozambique-flag">🇲🇿</div>
+
+    <!-- Cabeçalho -->
+    <header id="main-header" class="header-day fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-2">
+                <h1 id="header-title" class="header-title text-2xl sm:text-4xl font-bold">FLORESTINHA DO INDICO</h1>
+                <div class="flex items-center gap-2">
+                    <button id="lang-toggle" class="lang-btn px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base">
+                        <i class="fas fa-globe mr-1"></i>
+                        <span id="lang-text">EN</span>
+                    </button>
+                    <button id="cart-button" class="bg-white text-orange-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg transform transition-transform duration-200 hover:scale-110 relative">
+                        <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-1 sm:gap-2 flex-wrap justify-center">
+                <button class="menu-tab-btn btn-theme px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-base active-tab" data-menu="comidas">
+                    <span class="menu-text" data-pt="Comidas" data-en="Food">Comidas</span> <i class="fas fa-utensils ml-1"></i>
+                </button>
+                <button class="menu-tab-btn btn-theme px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-menu="mariscos">
+                    <span class="menu-text" data-pt="Mariscos" data-en="Seafood">Mariscos</span> <i class="fas fa-fish ml-1"></i>
+                </button>
+                <button class="menu-tab-btn btn-theme px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-menu="matabicho">
+                    <span class="menu-text" data-pt="Matabicho" data-en="Breakfast">Matabicho</span> <i class="fas fa-coffee ml-1"></i>
+                </button>
+                <button class="menu-tab-btn btn-theme px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-menu="sobremesa">
+                    <span class="menu-text" data-pt="Sobremesa" data-en="Dessert">Sobremesa</span> <i class="fas fa-ice-cream ml-1"></i>
+                </button>
+                <button class="menu-tab-btn btn-theme px-2 py-1 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-menu="bebidas">
+                    <span class="menu-text" data-pt="Bebidas" data-en="Drinks">Bebidas</span> <i class="fas fa-cocktail ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 pt-36 sm:pt-40 pb-8">
+
+        <!-- Informações do Cliente -->
+        <div id="customer-info" class="bg-transparent-500 text-white p-4 sm:p-6 rounded-3xl shadow-lg mb-8">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-center">
+                <span class="translate" data-pt="Boas-vindas à FLORESTINHA DO INDICO!" data-en="Welcome to FLORESTINHA DO INDICO!">Boas-vindas à FLORESTINHA DO INDICO!</span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="customer-name" class="flex-1 p-3 rounded-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                <input type="text" id="table-number" class="flex-1 p-3 rounded-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+            </div>
+            <p class="text-center text-xs sm:text-sm mt-4 italic">
+                <span class="translate" data-pt='Use um nome divertido! Ex: "Capitão do Barco".' data-en='Use a fun name! Ex: "Captain of the Boat".'>Use um nome divertido! Ex: "Capitão do Barco".</span>
+            </p>
+        </div>
+
+        <!-- Seção de Comidas -->
+        <section id="comidas-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section">
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/3.png" alt="Camarão Grelhado" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Camarão Grelhado" data-en="Grilled Shrimp">Camarão Grelhado</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Camarão fresco, molho de limão e alho, salada verde." data-en="Fresh shrimp, lemon and garlic sauce, green salad.">Camarão fresco, molho de limão e alho, salada verde.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 850</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Camarão Grelhado" data-item-en="Grilled Shrimp" data-price="850">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/2.png" alt="Bife com Cebola" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Bife com Cebola" data-en="Steak with Onions">Bife com Cebola</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Bife suculento grelhado, coberto com cebolas caramelizadas." data-en="Juicy grilled steak, topped with caramelized onions.">Bife suculento grelhado, coberto com cebolas caramelizadas.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 750</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Bife com Cebola" data-item-en="Steak with Onions" data-price="750" data-options='{"Cebola?": ["Com Cebola", "Sem Cebola"]}' data-options-en='{"Onions?": ["With Onions", "Without Onions"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/4.png" alt="Pescada Frita" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Pescada Frita" data-en="Fried Hake">Pescada Frita</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Pescada frita, batata frita e salada de tomate." data-en="Fried hake, french fries and tomato salad.">Pescada frita, batata frita e salada de tomate.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 680</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Pescada Frita" data-item-en="Fried Hake" data-price="680" data-options='{"Temperos?": ["Normal", "Extra Temperos"]}' data-options-en='{"Seasoning?": ["Normal", "Extra Seasoning"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/5.png" alt="Calamari Grelhado" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Calamari Grelhado" data-en="Grilled Calamari">Calamari Grelhado</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Lulas grelhadas, molho da casa, arroz de coco e salada." data-en="Grilled squid, house sauce, coconut rice and salad.">Lulas grelhadas, molho da casa, arroz de coco e salada.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 920</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Calamari Grelhado" data-item-en="Grilled Calamari" data-price="920" data-options='{"Molho?": ["Molho Normal", "Molho Picante", "Sem Molho"]}' data-options-en='{"Sauce?": ["Normal Sauce", "Spicy Sauce", "No Sauce"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Mariscos -->
+        <section id="mariscos-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section hidden">
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Tender Grilled Lobster Tails with Spicy Sriracha Butter - Easy Recipe!.jpeg" alt="Lagosta Grelhada" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Lagosta Grelhada" data-en="Grilled Lobster">Lagosta Grelhada</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Lagosta fresca grelhada com manteiga de alho." data-en="Fresh grilled lobster with garlic butter.">Lagosta fresca grelhada com manteiga de alho.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 1500</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Lagosta Grelhada" data-item-en="Grilled Lobster" data-price="1500">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/5.png" alt="Prato de Marisco Misto" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Prato de Marisco Misto" data-en="Mixed Seafood Platter">Prato de Marisco Misto</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Seleção de camarão, lulas e mexilhões." data-en="Selection of shrimp, squid and mussels.">Seleção de camarão, lulas e mexilhões.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 1200</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Prato de Marisco Misto" data-item-en="Mixed Seafood Platter" data-price="1200">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/caranguejo no leite de côco.jpeg" alt="Caranguejo ao Piri-Piri" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Caranguejo ao Piri-Piri" data-en="Piri-Piri Crab">Caranguejo ao Piri-Piri</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Caranguejo fresco com molho picante tradicional." data-en="Fresh crab with traditional spicy sauce.">Caranguejo fresco com molho picante tradicional.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 980</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Caranguejo ao Piri-Piri" data-item-en="Piri-Piri Crab" data-price="980" data-options='{"Picante?": ["Suave", "Médio", "Muito Picante"]}' data-options-en='{"Spicy?": ["Mild", "Medium", "Very Spicy"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Polvo à Lagareiro 🐙🍋 _ Um Clássico Português com Muito Sabor! 🇵🇹✨.jpeg" alt="Polvo à Lagareiro" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Polvo à Lagareiro" data-en="Octopus Lagareiro Style">Polvo à Lagareiro</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Polvo grelhado com batatas a murro e azeite." data-en="Grilled octopus with smashed potatoes and olive oil.">Polvo grelhado com batatas a murro e azeite.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 1100</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Polvo à Lagareiro" data-item-en="Octopus Lagareiro Style" data-price="1100">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Matabicho -->
+        <section id="matabicho-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section hidden">
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Fábio Alves Marques on Instagram_ _QUEM GOSTA DE PÃO CIM OVO D.it @chefsalert @chefsofinstagram @gourmetparadise @gastroart @cookniche @professionalchefs @michelinguide @theartofplating @thebestchefawards @tripadvisor_" alt="Pão com Ovo" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Pão com Ovo e Presunto" data-en="Bread with Egg and Ham">Pão com Ovo e Presunto</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Pão fresco, ovos mexidos e fatias de presunto." data-en="Fresh bread, scrambled eggs and ham slices.">Pão fresco, ovos mexidos e fatias de presunto.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 150</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Pão com Ovo e Presunto" data-item-en="Bread with Egg and Ham" data-price="150" data-options='{"Ovos?": ["Mexidos", "Estrelados"]}' data-options-en='{"Eggs?": ["Scrambled", "Fried"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Bolinho de Fubá e um café quentinho🤭 Tudo que não….jpeg" alt="Café com Leite" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Café com Leite e Bolo" data-en="Coffee with Milk and Cake">Café com Leite e Bolo</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Café fresco, leite quente e bolo caseiro." data-en="Fresh coffee, hot milk and homemade cake.">Café fresco, leite quente e bolo caseiro.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 120</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Café com Leite e Bolo" data-item-en="Coffee with Milk and Cake" data-price="120">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Torrada, banana e pasta de amendoim 💪🏻.jpeg" alt="Torradas" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Torradas com Amendoim" data-en="Toast with Peanut Butter">Torradas com Amendoim</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Torradas crocantes com manteiga de amendoim caseira." data-en="Crispy toast with homemade peanut butter.">Torradas crocantes com manteiga de amendoim caseira.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 100</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Torradas com Amendoim" data-item-en="Toast with Peanut Butter" data-price="100">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/download (27).jpeg" alt="Frutas" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Salada de Frutas Tropicais" data-en="Tropical Fruit Salad">Salada de Frutas Tropicais</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Manga, papaia, abacaxi e banana frescos." data-en="Fresh mango, papaya, pineapple and banana.">Manga, papaia, abacaxi e banana frescos.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 180</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Salada de Frutas Tropicais" data-item-en="Tropical Fruit Salad" data-price="180">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Sobremesa -->
+        <section id="sobremesa-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section hidden">
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/RECEITA DE PUDIM DE COCO CREMOSO_ NÃO VAI AO FORNO_ FÁCIL E RÁPIDO _ Novembro 2024.jpeg" alt="Pudim" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Pudim de Coco" data-en="Coconut Pudding">Pudim de Coco</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Sobremesa cremosa de coco com caramelo." data-en="Creamy coconut dessert with caramel.">Sobremesa cremosa de coco com caramelo.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 200</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Pudim de Coco" data-item-en="Coconut Pudding" data-price="200">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/Mousse de maracujá fácil e prática.jpeg" alt="Mousse" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Mousse de Maracujá" data-en="Passion Fruit Mousse">Mousse de Maracujá</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Leve e refrescante mousse de maracujá." data-en="Light and refreshing passion fruit mousse.">Leve e refrescante mousse de maracujá.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 180</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Mousse de Maracujá" data-item-en="Passion Fruit Mousse" data-price="180">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/7df7f93f-7df4-4655-8f43-fef904dd8df9.jpeg" alt="Gelado" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Gelado Artesanal" data-en="Artisan Ice Cream">Gelado Artesanal</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Gelado cremoso em sabores variados." data-en="Creamy ice cream in various flavors.">Gelado cremoso em sabores variados.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 150</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Gelado Artesanal" data-item-en="Artisan Ice Cream" data-price="150" data-options='{"Sabor?": ["Manga", "Coco", "Chocolate", "Baunilha"]}' data-options-en='{"Flavor?": ["Mango", "Coconut", "Chocolate", "Vanilla"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-day p-3 sm:p-6">
+                <img src="florestinha img/O Bolo Que Todo Mundo Vai Pedir de Novo! 🔁🍰.jpeg" alt="Bolo" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
+                    <span class="translate" data-pt="Bolo de Chocolate" data-en="Chocolate Cake">Bolo de Chocolate</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 mb-2 flex-grow">
+                    <span class="translate" data-pt="Fatia de bolo de chocolate húmido e cremoso." data-en="Slice of moist and creamy chocolate cake.">Fatia de bolo de chocolate húmido e cremoso.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-500">MZN 220</span>
+                    <button class="add-to-cart-btn btn-theme px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Bolo de Chocolate" data-item-en="Chocolate Cake" data-price="220">
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Bebidas -->
+        <section id="bebidas-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section hidden">
+            <div class="card-night p-3 sm:p-6">
+                <img src="florestinha img/8.png" alt="Mojito" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1">
+                    <span class="translate" data-pt="Mojito" data-en="Mojito">Mojito</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 flex-grow">
+                    <span class="translate" data-pt="Rum, hortelã, sumo de limão e açúcar." data-en="Rum, mint, lemon juice and sugar.">Rum, hortelã, sumo de limão e açúcar.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-300">MZN 350</span>
+                    <button class="add-to-cart-btn btn-theme-night px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Mojito" data-item-en="Mojito" data-price="350" data-options='{"Gelo?": ["Com Gelo", "Sem Gelo"], "Doçura?": ["Normal", "Mais Doce"]}' data-options-en='{"Ice?": ["With Ice", "Without Ice"], "Sweetness?": ["Normal", "Sweeter"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card-night p-3 sm:p-6">
+                <img src="florestinha img/7.png" alt="Caipirinha" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1">
+                    <span class="translate" data-pt="Caipirinha" data-en="Caipirinha">Caipirinha</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 flex-grow">
+                    <span class="translate" data-pt="Cachaça, limão espremido e açúcar." data-en="Cachaça, fresh lime and sugar.">Cachaça, limão espremido e açúcar.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-300">MZN 300</span>
+                    <button class="add-to-cart-btn btn-theme-night px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Caipirinha" data-item-en="Caipirinha" data-price="300" data-options='{"Gelo?": ["Com Gelo", "Sem Gelo"], "Intensidade?": ["Suave", "Forte"]}' data-options-en='{"Ice?": ["With Ice", "Without Ice"], "Strength?": ["Mild", "Strong"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-night p-3 sm:p-6">
+                <img src="florestinha img/8.jpg" alt="Gin" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1">
+                    <span class="translate" data-pt="Gin Tônica" data-en="Gin Tonic">Gin Tônica</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 flex-grow">
+                    <span class="translate" data-pt="Gin, água tônica e uma rodela de limão." data-en="Gin, tonic water and a lemon slice.">Gin, água tônica e uma rodela de limão.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-300">MZN 400</span>
+                    <button class="add-to-cart-btn btn-theme-night px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Gin Tônica" data-item-en="Gin Tonic" data-price="400" data-options='{"Rodela de Limão?": ["Com Rodela", "Sem Rodela"], "Tônica?": ["Normal", "Diet"]}' data-options-en='{"Lemon Slice?": ["With Slice", "Without Slice"], "Tonic?": ["Normal", "Diet"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-night p-3 sm:p-6">
+                <img src="florestinha img/6.jpg" alt="Cerveja" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1">
+                    <span class="translate" data-pt="Cerveja Nacional" data-en="Local Beer">Cerveja Nacional</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 flex-grow">
+                    <span class="translate" data-pt="A melhor seleção de cervejas nacionais." data-en="The best selection of local beers.">A melhor seleção de cervejas nacionais.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-300">MZN 120</span>
+                    <button class="add-to-cart-btn btn-theme-night px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Cerveja Nacional" data-item-en="Local Beer" data-price="120" data-options='{"Temperatura?": ["Gelada", "Muito Gelada"]}' data-options-en='{"Temperature?": ["Cold", "Very Cold"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-night p-3 sm:p-6">
+                <img src="florestinha florestinha img/9.png" alt="Sumos" class="card-image mb-3 sm:mb-4 shadow-md">
+                <h3 class="text-sm sm:text-xl font-bold mb-1">
+                    <span class="translate" data-pt="Sumos Naturais" data-en="Fresh Juices">Sumos Naturais</span>
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-300 mb-2 flex-grow">
+                    <span class="translate" data-pt="Manga, laranja, abacaxi ou maracujá frescos." data-en="Fresh mango, orange, pineapple or passion fruit.">Manga, laranja, abacaxi ou maracujá frescos.</span>
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-lg sm:text-2xl font-bold text-orange-300">MZN 80</span>
+                    <button class="add-to-cart-btn btn-theme-night px-3 py-1 sm:px-6 sm:py-2 rounded-full shadow-lg text-xs sm:text-base" data-item="Sumos Naturais" data-item-en="Fresh Juices" data-price="80" data-options='{"Sabor?": ["Manga", "Laranja", "Abacaxi", "Maracujá"], "Açúcar?": ["Com Açúcar", "Sem Açúcar"]}' data-options-en='{"Flavor?": ["Mango", "Orange", "Pineapple", "Passion Fruit"], "Sugar?": ["With Sugar", "No Sugar"]}'>
+                        <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center text-gray-500 text-sm mt-auto mb-4">
+        <p>
+            <span class="translate" data-pt="Feito com o sabor de Moçambique" data-en="Made with the flavor of Mozambique">Feito com o sabor de Moçambique</span> 🇲🇿
+            <i class="fas fa-heart text-red-500"></i>
+        </p>
+    </footer>
+
+    <!-- Modal de Opções -->
+    <div id="options-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-2xl w-full max-w-sm">
+            <h3 id="modal-item-name" class="text-lg sm:text-xl font-semibold mb-4 text-gray-800"></h3>
+            <div id="modal-options-container" class="space-y-4"></div>
+            <div class="flex justify-end mt-6 space-x-2">
+                <button id="cancel-modal-btn" class="close-btn px-4 py-2 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base">
+                    <span class="translate" data-pt="Cancelar" data-en="Cancel">Cancelar</span>
+                </button>
+                <button id="add-to-cart-modal-btn" class="order-btn px-4 py-2 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base">
+                    <span class="translate" data-pt="Adicionar" data-en="Add">Adicionar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-800">
+                    <span class="translate" data-pt="Seu Pedido" data-en="Your Order">Seu Pedido</span>
+                </h3>
+                <button id="close-cart-modal" class="text-gray-500 hover:text-gray-800">
+                    <i class="fas fa-times-circle text-2xl"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="space-y-4 max-h-80 overflow-y-auto">
+                <!-- Itens do carrinho serão inseridos aqui via JS -->
+            </div>
+            <div class="border-t pt-4 mt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg sm:text-xl font-bold text-gray-800">
+                        <span class="translate" data-pt="Total:" data-en="Total:">Total:</span>
+                    </span>
+                    <span id="cart-total" class="text-xl sm:text-2xl font-bold text-orange-500">MZN 0</span>
+                </div>
+                <button id="send-order-btn" class="order-btn w-full py-3 rounded-full text-sm sm:text-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    <span class="translate" data-pt="Enviar Pedido via WhatsApp" data-en="Send Order via WhatsApp">Enviar Pedido via WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmation-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-2xl w-full max-w-sm text-center">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4 text-green-600">
+                <span class="translate" data-pt="✅ Pedido Enviado!" data-en="✅ Order Sent!">✅ Pedido Enviado!</span>
+            </h3>
+            <p class="text-sm sm:text-base text-gray-600 mb-6">
+                <span class="translate" data-pt="Seu pedido foi enviado via WhatsApp. Aguarde o garçom com a sua delícia!" data-en="Your order has been sent via WhatsApp. Wait for the waiter with your delicious meal!">Seu pedido foi enviado via WhatsApp. Aguarde o garçom com a sua delícia!</span>
+            </p>
+            <button id="close-confirmation-modal" class="btn-theme px-4 py-2 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base">
+                <span class="translate" data-pt="Fechar" data-en="Close">Fechar</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let cart = [];
+        let total = 0;
+        let currentMenu = 'comidas';
+        let selectedItemOptions = {};
+        let currentLang = 'pt';
+        
+        // Elementos do DOM
+        const optionsModal = document.getElementById('options-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const cartBtn = document.getElementById('cart-button');
+        const closeCartModalBtn = document.getElementById('close-cart-modal');
+        const closeConfirmationModalBtn = document.getElementById('close-confirmation-modal');
+        const mainHeader = document.getElementById('main-header');
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const customerNameInput = document.getElementById('customer-name');
+        const tableNumberInput = document.getElementById('table-number');
+
+        // Traduções para placeholders
+        const translations = {
+            pt: {
+                namePlaceholder: 'Seu nome',
+                tablePlaceholder: 'N.º da Mesa (opcional)',
+                emptyCart: 'Seu carrinho está vazio'
+            },
+            en: {
+                namePlaceholder: 'Your name',
+                tablePlaceholder: 'Table number (optional)',
+                emptyCart: 'Your cart is empty'
+            }
+        };
+
+        // Função para traduzir a página
+        function translatePage(lang) {
+            currentLang = lang;
+            
+            // Traduzir todos os elementos com classe .translate
+            document.querySelectorAll('.translate').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+
+            // Traduzir todos os elementos com classe .menu-text
+            document.querySelectorAll('.menu-text').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+
+            // Atualizar placeholders
+            customerNameInput.placeholder = translations[lang].namePlaceholder;
+            tableNumberInput.placeholder = translations[lang].tablePlaceholder;
+
+            // Atualizar texto do botão de idioma
+            langText.textContent = lang === 'pt' ? 'EN' : 'PT';
+
+            // Atualizar carrinho se estiver vazio
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-gray-500 text-center py-4">${translations[lang].emptyCart}</p>`;
+            }
+        }
+
+        // Função para alternar entre menus
+        function switchMenu(menuName) {
+            currentMenu = menuName;
+            
+            // Esconder todos os menus
+            document.querySelectorAll('.menu-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Mostrar o menu selecionado
+            const selectedMenu = document.getElementById(`${menuName}-menu`);
+            if (selectedMenu) {
+                selectedMenu.classList.remove('hidden');
+            }
+            
+            // Atualizar estilo dos botões
+            document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab');
+                if (menuName === 'bebidas') {
+                    btn.classList.remove('btn-theme');
+                    btn.classList.add('btn-theme-night');
+                } else {
+                    btn.classList.remove('btn-theme-night');
+                    btn.classList.add('btn-theme');
+                }
+            });
+            
+            // Destacar botão ativo
+            const activeBtn = document.querySelector(`[data-menu="${menuName}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active-tab');
+            }
+            
+            // Mudar tema do fundo e cabeçalho
+            if (menuName === 'bebidas') {
+                document.body.style.backgroundColor = '#0d1a33';
+                mainHeader.classList.remove('header-day');
+                mainHeader.classList.add('header-night');
+            } else {
+                document.body.style.backgroundColor = '#e0f2fe';
+                mainHeader.classList.remove('header-night');
+                mainHeader.classList.add('header-day');
+            }
+        }
+
+        // Função para lidar com cliques nos botões "Adicionar"
+        function handleAddToCartClick(e) {
+            if (!e.target.closest('.add-to-cart-btn')) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const button = e.target.closest('.add-to-cart-btn');
+            const item = button.getAttribute('data-item');
+            const itemEn = button.getAttribute('data-item-en');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const options = button.getAttribute('data-options');
+            const optionsEn = button.getAttribute('data-options-en');
+
+            if (options) {
+                showOptionsModal(item, itemEn, price, options, optionsEn);
+            } else {
+                addItemToCart({ item, itemEn, price, options: {} });
+            }
+        }
+
+        // Função para mostrar o modal de opções
+        function showOptionsModal(item, itemEn, price, optionsJson, optionsEnJson) {
+            const parsedOptions = JSON.parse(optionsJson);
+            const parsedOptionsEn = optionsEnJson ? JSON.parse(optionsEnJson) : parsedOptions;
+            const modalItemName = document.getElementById('modal-item-name');
+            const modalOptionsContainer = document.getElementById('modal-options-container');
+
+            modalItemName.textContent = currentLang === 'pt' ? item : itemEn;
+            modalOptionsContainer.innerHTML = '';
+            selectedItemOptions = { 
+                item, 
+                itemEn, 
+                price, 
+                options: {}, 
+                optionsDisplay: {} 
+            };
+
+            const optionsToUse = currentLang === 'pt' ? parsedOptions : parsedOptionsEn;
+
+            for (const key in optionsToUse) {
+                const optionTitle = document.createElement('p');
+                optionTitle.textContent = key;
+                optionTitle.classList.add('font-semibold', 'text-gray-700', 'mb-2');
+                modalOptionsContainer.appendChild(optionTitle);
+
+                const radioContainer = document.createElement('div');
+                radioContainer.classList.add('space-y-2');
+                
+                optionsToUse[key].forEach((option, index) => {
+                    const inputId = `option-${key.replace(/\s/g, '-')}-${index}-${Date.now()}`;
+                    
+                    const radioDiv = document.createElement('div');
+                    radioDiv.classList.add('flex', 'items-center');
+                    
+                    const radioBtn = document.createElement('input');
+                    radioBtn.type = 'radio';
+                    radioBtn.name = `option-${key}`;
+                    radioBtn.id = inputId;
+                    radioBtn.value = option;
+                    radioBtn.classList.add('mr-2');
+                    
+                    // Guardar versões PT e EN
+                    const optionPt = parsedOptions[Object.keys(parsedOptions)[Object.keys(optionsToUse).indexOf(key)]][index];
+                    const optionEn = parsedOptionsEn[Object.keys(parsedOptionsEn)[Object.keys(optionsToUse).indexOf(key)]][index];
+                    
+                    if (index === 0) {
+                        radioBtn.checked = true;
+                        selectedItemOptions.options[key] = option;
+                        selectedItemOptions.optionsDisplay[key] = { pt: optionPt, en: optionEn };
+                    }
+
+                    const label = document.createElement('label');
+                    label.htmlFor = inputId;
+                    label.textContent = option;
+                    label.classList.add('text-gray-600', 'cursor-pointer');
+
+                    radioBtn.addEventListener('change', function() {
+                        if (this.checked) {
+                            selectedItemOptions.options[key] = option;
+                            selectedItemOptions.optionsDisplay[key] = { pt: optionPt, en: optionEn };
+                        }
+                    });
+
+                    radioDiv.appendChild(radioBtn);
+                    radioDiv.appendChild(label);
+                    radioContainer.appendChild(radioDiv);
+                });
+                
+                modalOptionsContainer.appendChild(radioContainer);
+                
+                if (optionsToUse[key].length > 0) {
+                    const keyPt = Object.keys(parsedOptions)[Object.keys(optionsToUse).indexOf(key)];
+                    const keyEn = Object.keys(parsedOptionsEn)[Object.keys(optionsToUse).indexOf(key)];
+                    const optionPt = parsedOptions[keyPt][0];
+                    const optionEn = parsedOptionsEn[keyEn][0];
+                    selectedItemOptions.options[key] = optionsToUse[key][0];
+                    selectedItemOptions.optionsDisplay[key] = { pt: optionPt, en: optionEn };
+                }
+            }
+
+            optionsModal.classList.remove('hidden');
+        }
+
+        // Função para adicionar item ao carrinho
+        function addItemToCart(item) {
+            cart.push({
+                ...item,
+                id: Date.now() + Math.random()
+            });
+            updateCartDisplay();
+        }
+
+        // Função para remover item do carrinho
+        function removeItemFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+        }
+
+        // Função para atualizar a exibição do carrinho
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItemsContainer.innerHTML = '';
+            total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-gray-500 text-center py-4">${translations[currentLang].emptyCart}</p>`;
+                cartCount.textContent = '0';
+                cartTotal.textContent = 'MZN 0';
+                return;
+            }
+
+            cart.forEach((item) => {
+                total += item.price;
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('flex', 'justify-between', 'items-start', 'bg-gray-100', 'p-3', 'rounded-xl');
+                
+                let optionsText = '';
+                if (item.optionsDisplay && Object.keys(item.optionsDisplay).length > 0) {
+                    const optionsList = Object.entries(item.optionsDisplay).map(([key, value]) => {
+                        const displayValue = currentLang === 'pt' ? value.pt : value.en;
+                        return `${key}: ${displayValue}`;
+                    });
+                    optionsText = `<p class="text-xs sm:text-sm text-gray-500 mt-1">${optionsList.join(', ')}</p>`;
+                } else if (item.options && Object.keys(item.options).length > 0) {
+                    const optionsList = Object.entries(item.options).map(([key, value]) => `${key}: ${value}`);
+                    optionsText = `<p class="text-xs sm:text-sm text-gray-500 mt-1">${optionsList.join(', ')}</p>`;
+                }
+                
+                const itemName = currentLang === 'pt' ? item.item : (item.itemEn || item.item);
+                
+                itemDiv.innerHTML = `
+                    <div class="flex-1">
+                        <p class="text-sm sm:text-base font-semibold text-gray-800">${itemName}</p>
+                        ${optionsText}
+                        <p class="text-base sm:text-lg font-bold text-orange-500 mt-1">MZN ${item.price}</p>
+                    </div>
+                    <button class="remove-from-cart-btn text-red-500 hover:text-red-700 ml-4 p-2" data-item-id="${item.id}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            cartCount.textContent = cart.length;
+            cartTotal.textContent = `MZN ${total}`;
+            
+            cartItemsContainer.addEventListener('click', function(e) {
+                if (e.target.closest('.remove-from-cart-btn')) {
+                    const btn = e.target.closest('.remove-from-cart-btn');
+                    const itemId = parseFloat(btn.getAttribute('data-item-id'));
+                    removeItemFromCart(itemId);
+                }
+            });
+        }
+
+        // Função para enviar pedido via WhatsApp
+        function sendOrderToWhatsApp() {
+            const customerName = document.getElementById('customer-name').value.trim() || (currentLang === 'pt' ? 'Cliente Anônimo' : 'Anonymous Customer');
+            const tableNumber = document.getElementById('table-number').value.trim() || (currentLang === 'pt' ? 'Não informado' : 'Not provided');
+            
+            if (cart.length === 0) {
+                alert(currentLang === 'pt' ? "O seu carrinho está vazio!" : "Your cart is empty!");
+                return;
+            }
+
+            const header = currentLang === 'pt' 
+                ? `*🏖️ NOVO PEDIDO - FLORESTINHA DO INDICO 🏖️*\n\n`
+                : `*🏖️ NEW ORDER - FLORESTINHA DO INDICO 🏖️*\n\n`;
+            
+            const nameLabel = currentLang === 'pt' ? '*👤 Nome:*' : '*👤 Name:*';
+            const tableLabel = currentLang === 'pt' ? '*🪑 Mesa:*' : '*🪑 Table:*';
+            const dateLabel = currentLang === 'pt' ? '*📅 Data:*' : '*📅 Date:*';
+            const timeLabel = currentLang === 'pt' ? '*⏰ Hora:*' : '*⏰ Time:*';
+            const itemsHeader = currentLang === 'pt' 
+                ? `*═══ ITENS DO PEDIDO ═══*\n\n`
+                : `*═══ ORDER ITEMS ═══*\n\n`;
+            
+            let message = header;
+            message += `${nameLabel} ${customerName}\n`;
+            message += `${tableLabel} ${tableNumber}\n`;
+            message += `${dateLabel} ${new Date().toLocaleDateString('pt-MZ')}\n`;
+            message += `${timeLabel} ${new Date().toLocaleTimeString('pt-MZ')}\n\n`;
+            message += itemsHeader;
+
+            cart.forEach((item, index) => {
+                const itemName = currentLang === 'pt' ? item.item : (item.itemEn || item.item);
+                message += `${index + 1}. *${itemName}* - MZN ${item.price}\n`;
+                
+                if (item.optionsDisplay && Object.keys(item.optionsDisplay).length > 0) {
+                    const optionsList = Object.entries(item.optionsDisplay).map(([key, value]) => {
+                        const displayValue = currentLang === 'pt' ? value.pt : value.en;
+                        return `${key}: ${displayValue}`;
+                    });
+                    const notesLabel = currentLang === 'pt' ? '📝 Observações:' : '📝 Notes:';
+                    message += `   └ ${notesLabel} ${optionsList.join(', ')}\n`;
+                } else if (item.options && Object.keys(item.options).length > 0) {
+                    const optionsList = Object.entries(item.options).map(([key, value]) => `${key}: ${value}`);
+                    const notesLabel = currentLang === 'pt' ? '📝 Observações:' : '📝 Notes:';
+                    message += `   └ ${notesLabel} ${optionsList.join(', ')}\n`;
+                }
+                message += `\n`;
+            });
+
+            const totalLabel = currentLang === 'pt' ? '*💰 TOTAL:' : '*💰 TOTAL:';
+            const restaurantInfo = currentLang === 'pt'
+                ? '*📍 Restaurante FLORESTINHA DO INDICO - Moçambique 🇲🇿*\n'
+                : '*📍 FLORESTINHA DO INDICO Restaurant - Mozambique 🇲🇿*\n';
+            const paymentInfo = currentLang === 'pt'
+                ? '*💳 Pagamento:* A ser feito em mão com o garçom\n\n'
+                : '*💳 Payment:* To be made in person with the waiter\n\n';
+            const thanksMsg = currentLang === 'pt'
+                ? '_Obrigado pela preferência!_ 🙏'
+                : '_Thank you for your preference!_ 🙏';
+
+            message += `*═══════════════════*\n`;
+            message += `${totalLabel} MZN ${total}*\n\n`;
+            message += restaurantInfo;
+            message += paymentInfo;
+            message += thanksMsg;
+
+            const whatsappNumber = '258868532678';
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappLink, '_blank');
+            
+            cartModal.classList.add('hidden');
+            confirmationModal.classList.remove('hidden');
+            
+            cart = [];
+            updateCartDisplay();
+        }
+
+        // Event Listeners principais
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', handleAddToCartClick);
+            
+            document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const menuName = this.getAttribute('data-menu');
+                    switchMenu(menuName);
+                });
+            });
+            
+            langToggleBtn.addEventListener('click', function() {
+                const newLang = currentLang === 'pt' ? 'en' : 'pt';
+                translatePage(newLang);
+            });
+            
+            cartBtn.addEventListener('click', function() {
+                cartModal.classList.remove('hidden');
+            });
+            
+            closeCartModalBtn.addEventListener('click', function() {
+                cartModal.classList.add('hidden');
+            });
+            
+            closeConfirmationModalBtn.addEventListener('click', function() {
+                confirmationModal.classList.add('hidden');
+            });
+            
+            document.getElementById('add-to-cart-modal-btn').addEventListener('click', function() {
+                addItemToCart(selectedItemOptions);
+                optionsModal.classList.add('hidden');
+            });
+            
+            document.getElementById('cancel-modal-btn').addEventListener('click', function() {
+                optionsModal.classList.add('hidden');
+            });
+            
+            document.getElementById('send-order-btn').addEventListener('click', sendOrderToWhatsApp);
+            
+            [optionsModal, cartModal, confirmationModal].forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Inicializar com português
+            translatePage('pt');
+            
+            console.log('Sistema de cardápio bilíngue iniciado com sucesso!');
+        });
+    </script>
+</body>
+</html>
