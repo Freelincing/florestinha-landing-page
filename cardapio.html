@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -141,8 +142,10 @@
     <!-- Cabeçalho -->
     <header id="main-header" class="header-day fixed top-0 w-full z-50">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center mb-2">
+            <div class="display: flex; algin-items: spacebetween;flex justify-between items-center mb-2">
+                <a href="index.html">
                 <h1 id="header-title" class="header-title text-2xl sm:text-4xl font-bold">FLORESTINHA DO INDICO</h1>
+                </a>
                 <div class="flex items-center gap-2">
                     <button id="lang-toggle" class="lang-btn px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base">
                         <i class="fas fa-globe mr-1"></i>
@@ -178,8 +181,8 @@
     <main class="container mx-auto px-4 pt-36 sm:pt-40 pb-8">
 
         <!-- Informações do Cliente -->
-        <div id="customer-info" class="bg-transparent-500 text-white p-4 sm:p-6 rounded-3xl shadow-lg mb-8">
-            <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-center">
+        <div id="customer-info" class="bg-transparent-500 text-black p-4 sm:p-6 rounded-3xl shadow-lg mb-8">
+            <h2 class="texto-com-sombra; text-xl text sm:text-2xl font-semibold mb-4 text-center ">
                 <span class="translate" data-pt="Boas-vindas à FLORESTINHA DO INDICO!" data-en="Welcome to FLORESTINHA DO INDICO!">Boas-vindas à FLORESTINHA DO INDICO!</span>
             </h2>
             <div class="flex flex-col md:flex-row gap-4">
@@ -328,7 +331,7 @@
         <!-- Seção de Matabicho -->
         <section id="matabicho-menu" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 menu-section hidden">
             <div class="card-day p-3 sm:p-6">
-                <img src="florestinha img/Fábio Alves Marques on Instagram_ _QUEM GOSTA DE PÃO CIM OVO D.it @chefsalert @chefsofinstagram @gourmetparadise @gastroart @cookniche @professionalchefs @michelinguide @theartofplating @thebestchefawards @tripadvisor_" alt="Pão com Ovo" class="card-image mb-3 sm:mb-4 shadow-md">
+                <img src="florestinha img/pao com ovo.jpg" alt="Pão com Ovo" class="card-image mb-3 sm:mb-4 shadow-md">
                 <h3 class="text-sm sm:text-xl font-bold mb-1 text-gray-800">
                     <span class="translate" data-pt="Pão com Ovo e Presunto" data-en="Bread with Egg and Ham">Pão com Ovo e Presunto</span>
                 </h3>
@@ -510,7 +513,7 @@
             </div>
 
             <div class="card-night p-3 sm:p-6">
-                <img src="florestinha img/6.jpg" alt="Cerveja" class="card-image mb-3 sm:mb-4 shadow-md">
+                <img src="florestinha img/6.png" alt="Cerveja" class="card-image mb-3 sm:mb-4 shadow-md">
                 <h3 class="text-sm sm:text-xl font-bold mb-1">
                     <span class="translate" data-pt="Cerveja Nacional" data-en="Local Beer">Cerveja Nacional</span>
                 </h3>
@@ -526,7 +529,7 @@
             </div>
 
             <div class="card-night p-3 sm:p-6">
-                <img src="florestinha florestinha img/9.png" alt="Sumos" class="card-image mb-3 sm:mb-4 shadow-md">
+                <img src="florestinha img/9.png" alt="Sumos" class="card-image mb-3 sm:mb-4 shadow-md">
                 <h3 class="text-sm sm:text-xl font-bold mb-1">
                     <span class="translate" data-pt="Sumos Naturais" data-en="Fresh Juices">Sumos Naturais</span>
                 </h3>
@@ -610,6 +613,66 @@
             </button>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <div class="footer-col footer-col-left">
+                    <h3 class="footer-title" style="font-family: 'comic Sans MS', cursive;">
+                        Florestinha Do Índico
+                    </h3>
+                    <p class="footer-description">
+                        <span class="lang-pt">O sabor autêntico de Moçambique em cada prato, com a hospitalidade calorosa que nos define.</span>
+                        <span class="lang-en hidden">The authentic flavor of Mozambique in every dish, with the warm hospitality that defines us.</span>
+                    </p>
+                </div>
+                
+                <div class="footer-col footer-col-center">
+                    <h4 class="footer-subtitle">
+                        <span class="lang-pt">Redes Sociais</span>
+                        <span class="lang-en hidden">Social Media</span>
+                    </h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/florestinhadoindico/" class="social-icon-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-col-right">
+                    <h4 class="footer-subtitle">
+                        <span class="lang-pt">Contato</span>
+                        <span class="lang-en hidden">Contact</span>
+                    </h4>
+                    <p class="contact-detail">
+                        <i class="fas fa-phone mr-2"></i>
+                        +258 860 000 000
+                    </p>
+                    <p class="contact-detail">
+                        <i class="fas fa-envelope mr-2"></i>
+                        info@florestinha.co.mz
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    <span class="lang-pt">&copy; 2025 Florestinha do Índico. Todos os direitos reservados. 🇲🇿</span>
+                    <span class="lang-en hidden">&copy; 2025 Florestinha do Índico. All rights reserved. 🇲🇿</span>
+                </p>
+                <p class="footer-bottom-text-small">
+                    powered by zeinadine
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Variáveis globais

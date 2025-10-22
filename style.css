@@ -230,7 +230,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
-    border-left: 5px solid var(--primary-color);
+    border-left:    1px solid var(--primary-color);
 }
 
 .service-card:hover {
@@ -1217,4 +1217,9 @@ body {
         font-size: 1.3rem;
         gap: 1rem;
     }
+}
+
+.texto-com-sombra {
+  color: #000000; /* Cor do texto (ex: preto) */
+  text-shadow: 2px 2px 4px #ffffff; /* Sombra: deslocamento X, deslocamento Y, raio do borrão, cor da sombra */
 }
